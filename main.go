@@ -25,10 +25,19 @@ func main() {
 
 	router := fiber.New()
 	router.Use(logger.New())
-	routes.UserRoutes(router)
+	
+	err := routes.UserRoutes(router)
+	if err != nil {
+		panic(err)
+		return
+	}
 	router.Use(middleware.Authentication())
 
-	routes.FoodRoutes(router)
+	err = routes.FoodRoutes(router)
+	if err != nil {
+		fmt.Print(err)
+		return
+	}
 	routes.MenuRoutes(router)
 	routes.TableRoutes(router)
 	routes.OrderRoutes(router)
