@@ -45,7 +45,7 @@ func main() {
 	routes.InvoiceRoutes(router)
 
 
-	err := router.Listen(":" + port)
+	err = router.Listen(":" + port)
 	if err != nil {
 		fmt.Print("Error: Unable to show page")
 		return
